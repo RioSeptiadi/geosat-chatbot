@@ -32,6 +32,14 @@ logger = logging.getLogger("geosat")
 
 app = FastAPI(title="GEOSAT WhatsApp Bot")
 
+
+@app.get("/")
+async def root() -> PlainTextResponse:
+    """Landing page sederhana (dipakai Meta untuk validasi website bisnis)."""
+    return PlainTextResponse(
+        "GEOSAT - Sistem Reporting Satelit Kapal Berbasis LLM Melalui WhatsApp"
+    )
+
 # ------------------------------------------------------------
 # Template respons (SRS 3.1 - dipakai persis)
 # ------------------------------------------------------------
