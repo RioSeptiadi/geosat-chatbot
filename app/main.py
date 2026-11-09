@@ -12,7 +12,7 @@ from typing import Any, Optional
 
 import httpx
 from fastapi import BackgroundTasks, FastAPI, Query, Request
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
 
 from app.config import get_settings
 from app.db import (
@@ -34,10 +34,21 @@ app = FastAPI(title="GEOSAT WhatsApp Bot")
 
 
 @app.get("/")
-async def root() -> PlainTextResponse:
+async def root() -> HTMLResponse:
     """Landing page sederhana (dipakai Meta untuk validasi website bisnis)."""
-    return PlainTextResponse(
-        "GEOSAT - Sistem Reporting Satelit Kapal Berbasis LLM Melalui WhatsApp"
+    return HTMLResponse(
+        "<!DOCTYPE html>\n"
+        '<html lang="id">\n'
+        "<head>\n"
+        '<meta charset="utf-8">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        "<title>GEOSAT - Sistem Reporting Satelit Kapal</title>\n"
+        "</head>\n"
+        "<body>\n"
+        "<h1>GEOSAT</h1>\n"
+        "<p>Sistem Reporting Satelit Kapal Berbasis LLM Melalui WhatsApp.</p>\n"
+        "</body>\n"
+        "</html>"
     )
 
 # ------------------------------------------------------------
